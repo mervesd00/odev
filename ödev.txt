@@ -1,0 +1,57 @@
+SQL BOOTCAMP 1. Hafta Ödevi
+a. Belirli Kolonları Seçme
+Sorgu:
+
+sql
+Copy
+Edit
+SELECT FirstName, LastName, Salary 
+FROM Employees;
+Açıklama:
+Bu sorgu, Employees tablosundan sadece çalışanların adı, soyadı ve maaş bilgilerini getirir.
+
+b. DISTINCT Komutu ile Tekrarları Önleme
+Sorgu:
+
+sql
+Copy
+Edit
+SELECT DISTINCT Department 
+FROM Employees;
+Açıklama:
+DISTINCT komutu tekrar eden departman isimlerini kaldırarak sadece benzersiz departman isimlerini listeler.
+
+c. Belirli Bir Departmana Ait Çalışanları Listeleme
+Sorgu:
+
+sql
+Copy
+Edit
+SELECT * 
+FROM Employees 
+WHERE Department = 'IT';
+Açıklama:
+Bu sorgu, IT departmanında çalışanların bilgilerini filtreler.
+
+d. Maaşa Göre Sıralama
+Sorgu:
+
+sql
+Copy
+Edit
+SELECT * 
+FROM Employees 
+ORDER BY Salary DESC;
+Açıklama:
+Maaşları büyükten küçüğe sıralanr.
+
+e. Kolonları Birleştirme (Concatenation)
+Sorgu:
+
+sql
+Copy
+Edit
+SELECT CONCAT(FirstName, ' ', LastName) AS FullName, Salary 
+FROM Employees;
+Açıklama:
+Bu sorgu, çalışanların adını ve soyadını birleştirip FullName adıyla yeni bir kolon oluşturur.
