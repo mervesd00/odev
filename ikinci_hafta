@@ -1,1 +1,30 @@
+-- 1. Invoice tablosunda, tüm değerleri NULL olan kayıtların sayısını bulma
+-- Bu sorgu, Invoice tablosundaki tüm sütunları NULL olan kayıtları sayar.
+SELECT COUNT(*) AS null_records
+FROM Invoice
+WHERE invoice_id IS NULL
+AND customer_id IS NULL
+AND invoice_date IS NULL
+AND billing_address IS NULL
+AND billing_city IS NULL
+AND billing_state IS NULL
+AND billing_country IS NULL
+AND billingpostal_code IS NULL
+AND total IS NULL;
+-- Row sayısını, sorgunun sonucuna göre yorum satırında belirtiniz.
+
+-- 2. Total değerlerinin iki katını hesaplayıp, eski ve yeni versiyonları ile büyükten küçüğe sıralama
+-- Bu sorgu, Invoice tablosundaki total sütununu iki katına çıkarır ve eski değerlerle birlikte sıralar.
+SELECT invoice_id, total AS old_total, total * 2 AS new_total
+FROM Invoice
+ORDER BY new_total DESC;
+
+-- 3. Adres kolonundan soldan 3 ve sağdan 4 karakter alarak 'Açık Adres' oluşturma ve filtreleme
+-- Bu sorgu, billing_address sütununun başından 3 ve sonundan 4 karakter alarak yeni bir "Açık Adres" sütunu oluşturur.
+-- Ayrıca, 2013 yılının 8. ayındaki kayıtları filtreler.
+SELECT invoice_id, 
+       LEFT(billing_address, 3) || RIGHT(billing_address, 4) AS "Açık Adres"
+FROM Invoice
+WHERE EXTRACT(YEAR FROM invoice_date) = 2013
+AND EXTRACT(MONTH FROM invoice_date) = 8;
 
